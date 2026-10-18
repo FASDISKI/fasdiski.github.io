@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OneTab Visuals | PvP Client</title>
     <style>
-        /* Стиль в точности как наше ClickGUI */
         :root {
             --bg-outer: #0D0D10;
             --bg-panel: #16161A;
@@ -19,22 +18,19 @@
             --btn-hover: #353545;
             --border: #2E2E38;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            border-radius: 0px !important; /* КВАДРАТНЫЙ ДИЗАЙН */
+            border-radius: 0px !important;
+            scroll-behavior: smooth;
         }
-
         body {
             background-color: var(--bg-outer);
             color: var(--text-main);
             line-height: 1.6;
         }
-
-        /* Навигация */
         nav {
             background-color: var(--bg-header);
             border-bottom: 1px solid var(--divider);
@@ -46,7 +42,6 @@
             top: 0;
             z-index: 100;
         }
-
         .logo {
             font-size: 20px;
             font-weight: bold;
@@ -54,13 +49,11 @@
             align-items: center;
             gap: 10px;
         }
-
         .logo-square {
             width: 16px;
             height: 16px;
             background-color: var(--accent);
         }
-
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
@@ -68,37 +61,27 @@
             font-size: 14px;
             transition: 0.2s;
         }
-
         .nav-links a:hover {
             color: var(--text-main);
         }
-
-        /* Главный экран */
         header {
             padding: 100px 20px;
             text-align: center;
             background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-outer) 100%);
             border-bottom: 1px solid var(--divider);
         }
-
         h1 {
             font-size: 48px;
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
-
-        .highlight {
-            color: var(--accent);
-        }
-
+        .highlight { color: var(--accent); }
         p.subtitle {
             color: var(--text-muted);
             font-size: 18px;
             max-width: 600px;
             margin: 0 auto 40px auto;
         }
-
-        /* Кнопки */
         .btn {
             background-color: var(--accent);
             color: white;
@@ -112,66 +95,72 @@
             transition: 0.2s;
             box-shadow: 0 0 15px rgba(124, 92, 255, 0.3);
         }
-
         .btn:hover {
             background-color: #6a4ce0;
             box-shadow: 0 0 25px rgba(124, 92, 255, 0.6);
         }
-
         .btn-secondary {
             background-color: var(--btn-bg);
             box-shadow: none;
             margin-left: 15px;
         }
-
         .btn-secondary:hover {
             background-color: var(--btn-hover);
             box-shadow: none;
         }
-
-        /* Сетка фич */
-        .features {
+        .features, .instruction-section {
             padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        .instruction-section {
+            border-top: 1px solid var(--divider);
+            background-color: var(--bg-header);
+            max-width: 100%;
+        }
+        .instruction-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
         .section-title {
             text-align: center;
             font-size: 32px;
             margin-bottom: 50px;
         }
-
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
-
         .card {
             background-color: var(--bg-panel);
             border: 1px solid var(--border);
             padding: 30px;
             transition: 0.3s;
         }
-
         .card:hover {
             border-color: var(--accent);
             transform: translateY(-5px);
         }
-
         .card h3 {
             color: var(--accent);
             margin-bottom: 15px;
             font-size: 20px;
         }
-
         .card p {
             color: var(--text-muted);
             font-size: 14px;
         }
-
-        /* Подвал */
+        .instruction-list {
+            list-style: none;
+        }
+        .instruction-list li {
+            background-color: var(--bg-panel);
+            border-left: 3px solid var(--accent);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
         footer {
             background-color: var(--bg-header);
             padding: 40px 20px;
@@ -180,12 +169,10 @@
             color: var(--text-muted);
             font-size: 14px;
         }
-
     </style>
 </head>
 <body>
 
-    <!-- Навигация -->
     <nav>
         <div class="logo">
             <div class="logo-square"></div>
@@ -194,22 +181,20 @@
         <div class="nav-links">
             <a href="#features">Функции</a>
             <a href="#download">Скачать</a>
-            <a href="#">Discord</a>
+            <a href="https://discord.gg/">Discord</a>
         </div>
     </nav>
 
-    <!-- Главный экран -->
     <header>
         <h1>Почувствуй игру по-новому с <br><span class="highlight">OneTab Visuals</span></h1>
         <p class="subtitle">Клиентские PvP-визуалы, которые не лагают и не банятся. Более 15 модулей, глубокая оптимизация и стильный интерфейс.</p>
         
         <div id="download">
             <a href="#" class="btn">Скачать бесплатно</a>
-            <a href="#" class="btn btn-secondary">Инструкция</a>
+            <a href="#instruction" class="btn btn-secondary">Инструкция</a>
         </div>
     </header>
 
-    <!-- Блок возможностей -->
     <section class="features" id="features">
         <h2 class="section-title">Всё, что нужно для <span class="highlight">доминации</span></h2>
         
@@ -226,22 +211,22 @@
                 <h3>Кастомный интерфейс</h3>
                 <p>Настраивай прицел, Zoom и Watermark под себя. Меню открывается на Right Shift и не мешает в бою.</p>
             </div>
-            <div class="card">
-                <h3>Anti-Cheat Friendly</h3>
-                <p>Все модули работают исключительно на клиенте. Мы не вмешиваемся в пакеты сервера — играй без страха бана.</p>
-            </div>
-            <div class="card">
-                <h3>Красивое меню</h3>
-                <p>Квадратный дизайн, плавные анимации и удобное расположение элементов. Всё в стиле OneTab.</p>
-            </div>
-            <div class="card" style="border-color: var(--accent);">
-                <h3>Скоро: PRO & Эмоции</h3>
-                <p>Мы работаем над системой эмоций и эксклюзивными модулями. Следи за новостями в нашем Discord.</p>
-            </div>
         </div>
     </section>
 
-    <!-- Подвал -->
+    <!-- НОВЫЙ БЛОК: ИНСТРУКЦИЯ -->
+    <section class="instruction-section" id="instruction">
+        <div class="instruction-content">
+            <h2 class="section-title">Как <span class="highlight">установить</span> мод</h2>
+            <ul class="instruction-list">
+                <li><strong>Шаг 1:</strong> Установите <strong>Fabric Loader</strong> для версии Minecraft 1.21.11.</li>
+                <li><strong>Шаг 2:</strong> Скачайте и положите в папку <code>mods</code> библиотеку <strong>Fabric API</strong>.</li>
+                <li><strong>Шаг 3:</strong> Скачайте наш мод <strong>OneTab Visuals</strong> (кнопка выше) и положите его в ту же папку <code>mods</code>.</li>
+                <li><strong>Шаг 4:</strong> Запустите игру и нажмите клавишу <strong>Right Shift</strong> (Правый Shift), чтобы открыть меню.</li>
+            </ul>
+        </div>
+    </section>
+
     <footer>
         <p>© 2026 OneTab Visuals. Сделано с любовью к PvP.</p>
         <p style="margin-top: 10px; font-size: 12px;">Не является официальным продуктом Mojang AB.</p>
