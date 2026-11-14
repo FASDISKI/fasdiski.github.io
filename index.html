@@ -108,19 +108,22 @@
             background-color: var(--btn-hover);
             box-shadow: none;
         }
-        .features, .instruction-section {
+        .features, .instruction-section, .register-section {
             padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
-        .instruction-section {
+        .instruction-section, .register-section {
             border-top: 1px solid var(--divider);
             background-color: var(--bg-header);
             max-width: 100%;
         }
-        .instruction-content {
+        .instruction-content, .register-content {
             max-width: 800px;
             margin: 0 auto;
+        }
+        .register-content {
+            max-width: 400px;
         }
         .section-title {
             text-align: center;
@@ -166,6 +169,27 @@
             padding: 2px 6px;
             color: var(--accent);
         }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-outer);
+            border: 1px solid var(--border);
+            color: white;
+            outline: none;
+            transition: 0.2s;
+        }
+        .form-group input:focus {
+            border-color: var(--accent);
+        }
         footer {
             background-color: var(--bg-header);
             padding: 40px 20px;
@@ -186,8 +210,8 @@
         <div class="nav-links">
             <a href="#features">Функции</a>
             <a href="#download">Скачать</a>
-            <!-- Сюда потом вставишь ссылку на свой Discord -->
-            <a href="#">Discord</a>
+            <a href="#register">Регистрация</a>
+            <a href="https://vk.com/">ВКонтакте</a>
         </div>
     </nav>
 
@@ -196,9 +220,7 @@
         <p class="subtitle">Клиентские PvP-визуалы, которые не лагают и не банятся. Более 15 модулей, глубокая оптимизация и стильный интерфейс.</p>
         
         <div id="download">
-            <!-- ТУТ УЖЕ СТОИТ ТВОЯ ССЫЛКА НА СКАЧИВАНИЕ -->
             <a href="https://github.com/FASDISKI/fasdiski.github.io/releases/download/v1.0.0/onetab-1.0.0.jar" class="btn">Скачать бесплатно</a>
-            
             <a href="#instruction" class="btn btn-secondary">Инструкция</a>
         </div>
     </header>
@@ -224,7 +246,6 @@
                 <p>Keystrokes, JumpCircles, ArmorHUD, DamageTint, Low On Fire, Reach Display и многое другое, что делает игру комфортнее.</p>
             </div>
             
-            <!-- Выделенная карточка про PRO -->
             <div class="card" style="border-color: var(--accent); box-shadow: 0 0 15px rgba(124, 92, 255, 0.2);">
                 <h3 style="color: #fff; text-shadow: 0 0 10px var(--accent);">Скоро: PRO и Эмоции</h3>
                 <p>Мы работаем над масштабным обновлением. Тебя ждут крутые анимации эмоций, кастомные аксессуары для скинов и эксклюзивные PRO-модули.</p>
@@ -241,6 +262,23 @@
                 <li><strong>Шаг 3:</strong> Скачайте наш мод <strong>OneTab Visuals</strong> (кнопка выше) и положите его в ту же папку <code>mods</code>.</li>
                 <li><strong>Шаг 4:</strong> Запустите игру и нажмите клавишу <strong>Right Shift</strong> (Правый Shift), чтобы открыть меню.</li>
             </ul>
+        </div>
+    </section>
+
+    <section class="register-section" id="register">
+        <div class="register-content">
+            <h2 class="section-title">Регистрация</h2>
+            <form style="background-color: var(--bg-panel); padding: 30px; border: 1px solid var(--border);">
+                <div class="form-group">
+                    <label>Никнейм</label>
+                    <input type="text" placeholder="Введите ник">
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" placeholder="Введите пароль">
+                </div>
+                <button type="button" class="btn" style="width: 100%; margin-top: 10px;">Зарегистрироваться</button>
+            </form>
         </div>
     </section>
 
