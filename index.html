@@ -65,7 +65,7 @@
             color: var(--text-main);
         }
         header {
-            padding: 100px 20px;
+            padding: 60px 20px;
             text-align: center;
             background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-outer) 100%);
             border-bottom: 1px solid var(--divider);
@@ -108,27 +108,29 @@
             background-color: var(--btn-hover);
             box-shadow: none;
         }
-        .features, .instruction-section, .register-section {
-            padding: 80px 20px;
+        .register-section, .features, .instruction-section {
+            padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
-        .instruction-section, .register-section {
+        .register-section {
+            max-width: 500px;
+            margin: 40px auto;
+        }
+        .instruction-section {
             border-top: 1px solid var(--divider);
             background-color: var(--bg-header);
             max-width: 100%;
+            padding: 80px 20px;
         }
-        .instruction-content, .register-content {
+        .instruction-content {
             max-width: 800px;
             margin: 0 auto;
-        }
-        .register-content {
-            max-width: 400px;
         }
         .section-title {
             text-align: center;
             font-size: 32px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         .grid {
             display: grid;
@@ -180,7 +182,7 @@
         }
         .form-group input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background: var(--bg-outer);
             border: 1px solid var(--border);
             color: white;
@@ -225,6 +227,26 @@
         </div>
     </header>
 
+    <!-- Форма регистрации (ТЕПЕРЬ СВЕРХУ) -->
+    <section class="register-section" id="register">
+        <h2 class="section-title">Создать аккаунт</h2>
+        <form id="regForm" style="background-color: var(--bg-panel); padding: 30px; border: 1px solid var(--border);">
+            <div class="form-group">
+                <label>Никнейм</label>
+                <input type="text" id="regNick" placeholder="Введите ник" required>
+            </div>
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" id="regPass" placeholder="Введите пароль" required>
+            </div>
+            <div class="form-group">
+                <label>Повторите пароль</label>
+                <input type="password" id="regPass2" placeholder="Повторите пароль" required>
+            </div>
+            <button type="submit" class="btn" style="width: 100%; margin-top: 10px;" id="regBtn">Зарегистрироваться</button>
+        </form>
+    </section>
+
     <section class="features" id="features">
         <h2 class="section-title">Всё, что нужно для <span class="highlight">доминации</span></h2>
         
@@ -265,27 +287,41 @@
         </div>
     </section>
 
-    <section class="register-section" id="register">
-        <div class="register-content">
-            <h2 class="section-title">Регистрация</h2>
-            <form style="background-color: var(--bg-panel); padding: 30px; border: 1px solid var(--border);">
-                <div class="form-group">
-                    <label>Никнейм</label>
-                    <input type="text" placeholder="Введите ник">
-                </div>
-                <div class="form-group">
-                    <label>Пароль</label>
-                    <input type="password" placeholder="Введите пароль">
-                </div>
-                <button type="button" class="btn" style="width: 100%; margin-top: 10px;">Зарегистрироваться</button>
-            </form>
-        </div>
-    </section>
-
     <footer>
         <p>© 2026 OneTab Visuals. Сделано с любовью к PvP.</p>
         <p style="margin-top: 10px; font-size: 12px;">Не является официальным продуктом Mojang AB.</p>
     </footer>
 
+    <!-- СКРИПТ ДЛЯ ИМИТАЦИИ РЕГИСТРАЦИИ -->
+    <script>
+        document.getElementById('regForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Останавливаем отправку формы
+            
+            const pass1 = document.getElementById('regPass').value;
+            const pass2 = document.getElementById('regPass2').value;
+            const btn = document.getElementById('regBtn');
+
+            if (pass1 !== pass2) {
+                btn.innerText = 'Пароли не совпадают!';
+                btn.style.backgroundColor = '#EF4444'; // Красный
+                setTimeout(() => {
+                    btn.innerText = 'Зарегистрироваться';
+                    btn.style.backgroundColor = 'var(--accent)';
+                }, 2000);
+                return;
+            }
+
+            // Имитация успеха
+            btn.innerText = 'Успешно! Аккаунт создан';
+            btn.style.backgroundColor = '#4ADE80'; // Зеленый
+            
+            // Очищаем поля через 2 секунды
+            setTimeout(() => {
+                document.getElementById('regForm').reset();
+                btn.innerText = 'Зарегистрироваться';
+                btn.style.backgroundColor = 'var(--accent)';
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
